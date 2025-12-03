@@ -21,7 +21,7 @@ let checkCount=0;
 handleSlider();
 
 //set strength circle color to grey
-
+setIndicator("#ccc");
 
 
 
@@ -29,6 +29,13 @@ handleSlider();
 function handleSlider(){
     inputSlider.value=passwordLength;
     lengthDisplay.innerText=passwordLength;
+
+    //styling of slider by sliding by creating formula
+    const min=inputSlider.min;
+    const max=inputSlider.max;
+    inputSlider.style.backgroundSize=((passwordLength-min)*100/(max-min))+ "% 100%"
+    
+
 }
 
 
@@ -95,6 +102,7 @@ async function copyContent(){
     try{
         await navigator.clipboard.writeText(passwordDisplay.value);
         copyMsg.innerText="copied";
+        
 
     }
     catch(e){
